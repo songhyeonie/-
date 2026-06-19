@@ -998,3 +998,47 @@ html.lenis, html.lenis body{ height:auto; }
   .step{ grid-template-columns:1fr; }
   .step__no{ font-size:clamp(3rem,14vw,4.2rem); }
 }
+
+/* ============================================================
+   IMPACT BAND + NUMBERED IMAGE SLOT
+   Full-bleed cinematic statement band. The image area is a NUMBERED
+   placeholder the owner fills later (current images elsewhere untouched).
+   Drop a real <img> inside .impact__bg to replace the .imgslot.
+   ============================================================ */
+.impact{ position:relative; width:100vw; margin-inline:calc(50% - 50vw);
+  min-height:clamp(480px,66vh,780px); display:flex; align-items:flex-end;
+  overflow:hidden; background:#14110b; color:#fff; isolation:isolate; }
+.impact__bg{ position:absolute; inset:0; z-index:0; }
+.impact__bg img{ width:100%; height:100%; object-fit:cover; }
+.impact::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg, rgba(10,8,5,.30) 0%, rgba(10,8,5,.20) 42%, rgba(10,8,5,.86) 100%); }
+.impact__inner{ position:relative; z-index:2; width:100%; max-width:var(--maxw);
+  margin:0 auto; padding:clamp(48px,7vw,92px) var(--gut); }
+.impact__num{ font-family:var(--sans); font-weight:800; font-size:clamp(.78rem,1vw,.92rem);
+  letter-spacing:.34em; color:var(--sand); }
+.impact__title{ font-weight:800; letter-spacing:-.032em; line-height:1.05;
+  font-size:clamp(2.1rem,5.4vw,4.5rem); margin-top:20px; max-width:20ch; text-wrap:balance; }
+.impact__title b{ color:var(--sand); }
+.impact__desc{ margin-top:24px; max-width:56ch; color:rgba(255,255,255,.84);
+  line-height:1.72; font-size:clamp(1rem,1.15vw,1.16rem); }
+
+/* numbered placeholder slot — looks like an intentional director's slate */
+.imgslot{ position:absolute; inset:0; display:grid; place-items:center; text-align:center;
+  background:
+    radial-gradient(120% 120% at 50% 0%, #211b12 0%, #14110b 70%),
+    repeating-linear-gradient(45deg, transparent 0 22px, rgba(201,182,146,.045) 22px 23px); }
+.imgslot::before, .imgslot::after{ content:""; position:absolute; width:30px; height:30px;
+  border:2px solid rgba(201,182,146,.55); }
+.imgslot::before{ top:22px; left:22px; border-right:0; border-bottom:0; }
+.imgslot::after{ bottom:22px; right:22px; border-left:0; border-top:0; }
+.imgslot__mark{ transform:translateY(-8%); }
+.imgslot__mark b{ display:block; font-family:var(--sans); font-weight:800;
+  font-size:clamp(1.5rem,2.6vw,2.2rem); letter-spacing:.14em; color:var(--sand); }
+.imgslot__mark span{ display:block; margin-top:10px; font-size:13px; letter-spacing:.26em;
+  color:rgba(201,182,146,.72); font-weight:600; }
+.imgslot__mark em{ display:block; margin-top:18px; font-style:normal; font-size:12.5px;
+  letter-spacing:.02em; color:rgba(255,255,255,.5); max-width:40ch; line-height:1.65; padding-inline:24px; }
+@media (max-width:700px){
+  .impact{ min-height:clamp(360px,80vw,520px); }
+  .impact__title{ font-size:clamp(1.9rem,8vw,2.6rem); }
+}
