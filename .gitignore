@@ -1,0 +1,7 @@
+﻿.claude/
+_*/
+_*.html
+_*.png
+_imgdims.json
+Thumbs.db
+.DS_Store

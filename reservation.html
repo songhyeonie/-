@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservation — 정감 비앤지 JUNG'GAM BNG</title>
+<meta name="description" content="정감호텔 예약 및 정감비앤지 사업 상담 문의. 전화, 이메일, 온라인 문의로 편리하게 연결하세요.">
+<link rel="icon" type="image/png" href="assets/logo-02.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="preloader"><div class="pl-mark"><img class="pl-logo" src="assets/logo-01.png" alt="JUNG'GAM BNG branding &amp; gonggan"></div></div>
+<div class="progress"></div>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-04.png" alt="JUNG'GAM BNG"></a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="about.html">About us</a><a href="story.html">Story&amp;Moods</a><a href="rooms.html">Rooms</a>
+    <a href="manpower.html">Manpower</a><a href="others.html">Others</a><a href="utility.html">Utility</a>
+    <a href="near.html">Near</a><a href="interview.html">Interview</a><a class="cta" href="reservation.html">Reservation</a>
+  </nav>
+  <button class="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+</header>
+
+<section class="page-hero-scroll" data-scroll-height="520" style="height:calc(520px + 100vh)">
+  <div class="page-hero page-hero--reveal">
+  <div class="page-hero__media"><div class="ph ph--dark" data-label="Reservation 비주얼"></div></div>
+  <div class="page-hero__inner">
+    <p class="crumb">Reservation</p>
+    <h1 class="line-mask"><span>예약 &amp; 상담 문의</span></h1>
+    <p class="kr-keep" data-reveal style="--i:1">객실 예약부터 호텔 개발·운영 상담까지. 정감비앤지가 가장 알맞은 답을 드리겠습니다.</p>
+  </div>
+  </div>
+</section>
+
+<!-- 두 갈래 -->
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-2" data-stagger>
+      <article class="card" data-reveal style="border-top:1px solid var(--line);padding-top:34px">
+        <span class="tagnum">Stay</span><h3>객실 예약</h3>
+        <p class="kr-keep">정감호텔에서의 편안한 머무름을 예약하세요. 전화 또는 온라인으로 빠르게 도와드립니다.</p>
+        <p style="margin-top:18px;font-family:var(--serif);color:var(--bronze);font-size:1.5rem">T. 043-292-4422</p>
+        <p class="note-it">입실 15:00 · 퇴실 12:00 · 조식 07:00~09:00</p>
+      </article>
+      <article class="card" data-reveal style="border-top:1px solid var(--line);padding-top:34px">
+        <span class="tagnum">Business</span><h3>개발 · 운영 상담</h3>
+        <p class="kr-keep">호텔 개발, 공간 브랜딩, AIoT 스마트 운영 도입을 고민하신다면 정감비앤지에 문의하세요.</p>
+        <p style="margin-top:18px;font-family:var(--serif);color:var(--bronze);font-size:1.5rem">E. smdnc@daum.net</p>
+        <p class="note-it">자산 분석 → 사업 진단 → 제안 → 추진 → 수익화</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 폼 -->
+<section class="section" style="background:var(--ivory)">
+  <div class="wrap">
+    <div class="section-head center" data-reveal style="max-width:680px;margin-inline:auto">
+      <p class="eyebrow center-rule">Contact Us</p><h2 class="h-xl kr-keep">문의 남기기</h2>
+      <p class="lead kr-keep" style="margin-top:14px">아래 내용을 남겨주시면 담당자가 빠르게 연락드리겠습니다.</p>
+    </div>
+    <form data-reveal style="max-width:680px;margin-inline:auto;display:grid;gap:6px"
+          onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').hidden=false;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <input class="field" required placeholder="이름"><input class="field" required placeholder="연락처">
+      </div>
+      <input class="field" type="email" placeholder="이메일">
+      <select class="field">
+        <option>객실 예약 문의</option><option>호텔 개발 상담</option><option>공간 브랜딩 상담</option><option>AIoT 스마트 운영 도입</option><option>기타 문의</option>
+      </select>
+      <textarea class="field" required placeholder="문의 내용을 입력해 주세요" rows="5"></textarea>
+      <button class="btn btn--solid" type="submit" style="justify-content:center;margin-top:24px"><span>문의 보내기</span> <span class="arrow">→</span></button>
+      <p id="formMsg" hidden class="center" style="color:var(--bronze);font-weight:600;margin-top:14px">문의가 접수되었습니다. 빠르게 연락드리겠습니다. 감사합니다.</p>
+    </form>
+  </div>
+</section>
+
+<!-- 위치 -->
+<section class="section">
+  <div class="wrap split">
+    <div class="split__media" data-reveal><div class="media img-reveal"><div class="ph" data-label="오시는 길 · 지도"></div></div></div>
+    <div class="split__body">
+      <p class="bar-label" data-reveal>Location</p>
+      <h2 class="h-lg kr-keep" data-reveal style="--i:1">찾아오시는 길</h2>
+      <p class="lead kr-keep" data-reveal style="--i:2">(28673) 충청북도 청주시 서원구 모충로 168, SM빌딩 5F</p>
+      <p class="kr-keep" data-reveal style="--i:3;margin-top:6px;color:var(--ink-2)">168, Mochung-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do, Republic of Korea</p>
+      <p class="kr-keep" data-reveal style="--i:4;margin-top:18px;color:var(--ink-2)">T. 043-292-4422 &nbsp;|&nbsp; F. 043-901-0201<br>E. smdnc@daum.net</p>
+    </div>
+  </div>
+</section>
+
+<section class="section quote-band center">
+  <div class="wrap">
+    <blockquote class="kr-keep" data-reveal>“호텔의 가능성을 함께 이야기해보세요.”</blockquote>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-info"><a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-03.png" alt="JUNG'GAM BNG"></a>
+        <p>(28673) 충청북도 청주시 서원구 모충로 168, SM빌딩 5F<br>T. 043-292-4422 &nbsp; F. 043-901-0201 &nbsp; E. smdnc@daum.net</p></div>
+      <div><h5>Sitemap</h5><a href="about.html">About us</a><a href="story.html">Story &amp; Moods</a><a href="rooms.html">Rooms</a><a href="manpower.html">Manpower</a><a href="others.html">Others</a></div>
+      <div><h5>More</h5><a href="utility.html">Utility</a><a href="near.html">Near</a><a href="interview.html">Interview</a><a href="reservation.html">Reservation</a></div>
+    </div>
+    <div class="foot-bottom"><div class="socials"><a href="#">f</a><a href="#">▶</a><a href="#">◎</a><a href="#">b</a></div>
+      <p>정감 비앤지 branding&amp;gonggan · © 2026 All Rights Reserved | Design by Junggam BNG</p></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
