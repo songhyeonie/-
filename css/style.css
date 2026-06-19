@@ -573,9 +573,14 @@ textarea.field{ resize:vertical; }
   .metric-grid{ grid-template-columns:1fr 1fr; }
   .pillars, .grid-4, .grid-3{ grid-template-columns:1fr; }
 }
+/* NOTE: we intentionally do NOT force every animation off under
+   prefers-reduced-motion. The owner requires the signature scroll-reveal to
+   play on every device (this was the cause of "no motion on the deploy").
+   The heaviest vestibular motion — parallax, particle physics, 3D tilt,
+   magnetic buttons, Lenis smooth-scroll — is still gated off in JS via the
+   `reduce` flag, which keeps a sensible balance. */
 @media (prefers-reduced-motion:reduce){
-  *{ animation:none !important; transition:none !important; }
-  [data-reveal], .line-mask>*, .img-reveal{ opacity:1 !important; transform:none !important; filter:none !important; clip-path:none !important; }
+  .grain{ display:none; }
 }
 
 /* ============================================================
@@ -949,4 +954,47 @@ html.lenis, html.lenis body{ height:auto; }
 .ohero h1, .hero h1, .page-hero h1{ text-wrap:wrap; }
 @media (max-width:600px){
   .ohero h1{ font-size:clamp(1.7rem,7.4vw,2.5rem); line-height:1.12; }
+}
+
+/* ============================================================
+   EDITORIAL BOLDNESS — agency finish (trucknroll tone).
+   Bigger statements, ghost section numbers, stronger dividers,
+   nav underline. Late in the cascade so it wins cleanly. All
+   global → lifts every page at once.
+   ============================================================ */
+
+/* — dramatic full-width statement lines — */
+.statement{ font-size:clamp(2rem,4.8vw,3.7rem); line-height:1.34; letter-spacing:-.026em; font-weight:600; }
+.statement b{ color:var(--bronze); font-weight:700; }
+
+/* — oversized ghost numbers: process steps + pillars — */
+.step{ grid-template-columns:200px 1fr; }
+.step__no{ font-size:clamp(3.6rem,6.6vw,6.6rem); font-weight:800; letter-spacing:-.03em; line-height:.86; color:var(--bronze); }
+@supports (-webkit-text-stroke:1px var(--bronze)){
+  .step__no{ color:transparent; -webkit-text-stroke:1.5px var(--bronze); }
+}
+.pillar .pn{ font-size:1.55rem; font-weight:800; letter-spacing:-.01em; color:var(--bronze); display:block; }
+.pillar{ padding-top:24px; border-top-width:1.5px; }
+
+/* — metrics read like a headline — */
+.metric .num{ font-size:clamp(3rem,5.4vw,4.7rem); font-weight:800; }
+.metric{ border-top-width:1.5px; }
+
+/* — section heads: editorial eyebrow + breathing room — */
+.section-head .eyebrow{ margin-bottom:22px; }
+.eyebrow::before{ width:42px; }
+
+/* — nav: underline grows from left on hover/active — */
+.nav a{ position:relative; }
+.nav a::after{ content:""; position:absolute; left:0; bottom:-5px; height:1.5px; width:0;
+  background:currentColor; transition:width .42s var(--ease); }
+.nav a:hover::after, .nav a.active::after{ width:100%; }
+.nav a.cta::after{ display:none; }
+
+/* — stronger, warmer hairlines throughout — */
+.divisions, .metric, .pillar, .step, .ba__col li, .rate-table th, .rate-table td{ border-color:rgba(23,19,13,.16); }
+
+@media (max-width:880px){
+  .step{ grid-template-columns:1fr; }
+  .step__no{ font-size:clamp(3rem,14vw,4.2rem); }
 }
