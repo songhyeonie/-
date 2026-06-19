@@ -7,11 +7,15 @@
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- preloader ---- */
-  window.addEventListener('load', function () {
+  /* ---- preloader (with hard failsafe so the curtain can never get stuck) ---- */
+  (function () {
     var pl = document.querySelector('.preloader');
-    if (pl) setTimeout(function () { pl.classList.add('done'); }, 700);
-  });
+    if (!pl) return;
+    var lift = function () { pl.classList.add('done'); };
+    window.addEventListener('load', function () { setTimeout(lift, 700); });
+    // failsafe: even if `load` never fires (hung asset / slow CDN), lift after 3.2s
+    setTimeout(lift, 3200);
+  })();
 
   /* ---- scroll progress bar ---- */
   var bar = document.querySelector('.progress');
@@ -45,9 +49,12 @@
     });
   }
 
-  /* ---- reveal (with stagger via --i on children groups) ---- */
+  /* ---- reveal (with stagger via --i on children groups) ----
+     Signature scroll-reveal stays ON even under reduce-motion: it is a gentle
+     scroll-tied fade, not autoplay vestibular motion. This is what makes the
+     whole site feel alive as you scroll, so it must never be silently killed. */
   var revealEls = document.querySelectorAll('[data-reveal], .line-mask, .img-reveal');
-  if ('IntersectionObserver' in window && !reduce) {
+  if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -61,7 +68,7 @@
   /* ---- overview hero: add .is-in (one-shot) to trigger wipe/sweep ---- */
   var oheroEls = document.querySelectorAll('.ohero');
   if (oheroEls.length) {
-    if ('IntersectionObserver' in window && !reduce) {
+    if ('IntersectionObserver' in window) {
       var oio = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); oio.unobserve(e.target); } });
       }, { threshold: 0.18 });
@@ -112,7 +119,7 @@
     requestAnimationFrame(step);
   }
   var counters = document.querySelectorAll('[data-count]');
-  if ('IntersectionObserver' in window && counters.length && !reduce) {
+  if ('IntersectionObserver' in window && counters.length) {
     var co = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { animateCount(e.target); co.unobserve(e.target); }
