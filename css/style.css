@@ -970,7 +970,7 @@ html.lenis, html.lenis body{ height:auto; }
 /* — oversized ghost numbers: process steps + pillars — */
 .step{ grid-template-columns:200px 1fr; }
 .step__no{ font-size:clamp(3.6rem,6.6vw,6.6rem); font-weight:800; letter-spacing:-.03em; line-height:.86; color:var(--bronze); }
-@supports (-webkit-text-stroke:1px var(--bronze)){
+@supports (-webkit-text-stroke:1px #000){
   .step__no{ color:transparent; -webkit-text-stroke:1.5px var(--bronze); }
 }
 .pillar .pn{ font-size:1.55rem; font-weight:800; letter-spacing:-.01em; color:var(--bronze); display:block; }
