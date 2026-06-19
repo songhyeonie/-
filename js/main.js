@@ -5,7 +5,11 @@
    ============================================================ */
 (function () {
   'use strict';
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Owner direction: motion must run on EVERY device, even ones with the OS
+     "reduce motion / 동작 줄이기" setting turned on (that setting was why the
+     hero particles, vision map and parallax looked dead on other computers).
+     So we deliberately ignore prefers-reduced-motion and keep reduce = false. */
+  var reduce = false;
 
   /* ---- preloader (with hard failsafe so the curtain can never get stuck) ---- */
   (function () {

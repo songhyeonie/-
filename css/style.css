@@ -268,7 +268,7 @@ a.media:hover img, .hover-zoom:hover .media img, .card:hover .media img{ transfo
   animation:decoFloat 7s var(--ease) infinite alternate; }
 @keyframes decoFloat{ from{ transform:translateY(0) } to{ transform:translateY(-16px) } }
 @media (max-width:900px){ .deco{ display:none; } }
-@media (prefers-reduced-motion:reduce){ .deco{ animation:none; } }
+/* .deco float runs for everyone (owner direction) — no reduce gate. */
 
 /* ============================================================
    GRIDS / SPLIT
@@ -657,9 +657,10 @@ textarea.field{ resize:vertical; }
 @media (max-width:900px){ .filmstrip figure{ height:150px; } }
 @media (max-width:560px){ .mosaic{ gap:7px; } .mcol{ gap:7px; } }
 
+/* mtile safety only (tiles always visible). Marquees keep moving for everyone
+   per owner direction — no reduce-motion disable. */
 @media (prefers-reduced-motion:reduce){
   .mtile{ opacity:1 !important; transform:none !important; filter:none !important; }
-  .filmstrip__track, .logo-marquee__track{ animation:none !important; }
 }
 
 /* ============================================================
@@ -698,9 +699,7 @@ textarea.field{ resize:vertical; }
   animation:cue 2.2s var(--ease) infinite; }
 
 @media (max-width:700px){ .ohero{ min-height:74vh; } .ohero__cue{ display:none; } }
-@media (prefers-reduced-motion:reduce){
-  .ohero__track{ animation:none !important; transform:translateX(calc((-100% + 100vw)/2)) !important; }
-}
+/* overview hero keeps panning for everyone (owner direction) — no reduce gate. */
 
 /* ============================================================
    VISION MAP — animated South Korea network (index Vision 203055)
@@ -776,11 +775,9 @@ textarea.field{ resize:vertical; }
 @keyframes krLabel{ from{ opacity:0; transform:translate(-50%,-30%) scale(.9) } to{ opacity:1; transform:translate(-50%,-50%) scale(1) } }
 @media (max-width:560px){ .kr-label{ font-size:10.5px; padding:5px 9px; } }
 
-@media (prefers-reduced-motion:reduce){
-  .kr-map .land,.kr-map .arc{ stroke-dashoffset:0 !important; animation:none !important; }
-  .kr-map .land-fill,.kr-map .grid,.kr-map .kr-node,.kr-label{ opacity:1 !important; animation:none !important; transform:translate(-50%,-50%) !important; }
-  .kr-map .scan,.kr-map .spark{ display:none !important; }
-}
+/* vision map draws/pulses for everyone (owner direction) — no reduce gate.
+   (was previously frozen under prefers-reduced-motion, which made the map look
+   blank on machines that have "reduce motion" turned on.) */
 
 /* ============================================================
    APPLE-CLEAN — typography rhythm & responsive refinement (top layer)
